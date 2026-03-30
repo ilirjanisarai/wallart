@@ -1,77 +1,1751 @@
 <!DOCTYPE html>
 <html lang="sq">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Letre Murri Luksoze - WallArt Premium</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Adriatik Resort & Spa</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue-deep: #0a2540;
+    --blue-mid: #1a4a7a;
+    --blue-light: #2e7db5;
+    --blue-pale: #a8d5f0;
+    --aqua: #4fc3e8;
+    --sand: #f5efe6;
+    --sand-dark: #e8ddd0;
+    --gold: #c9a84c;
+    --white: #ffffff;
+    --text-dark: #0a2540;
+    --text-light: #6b8fa8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ============ LANDING PAGE ============ */
+  #landing {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--blue-deep);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  #landing.hide {
+    opacity: 0;
+    transform: translateY(-40px);
+    pointer-events: none;
+  }
+
+  .landing-bg {
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1800&q=80') center/cover no-repeat;
+    filter: brightness(0.35);
+  }
+
+  .landing-waves {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+  }
+
+  .landing-waves svg {
+    width: 200%;
+    animation: wave-move 8s linear infinite;
+  }
+
+  @keyframes wave-move {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .landing-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+    max-width: 900px;
+  }
+
+  .landing-badge {
+    display: inline-block;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--aqua);
+    border: 1px solid rgba(79,195,232,0.4);
+    padding: 0.4rem 1.2rem;
+    border-radius: 100px;
+    margin-bottom: 2rem;
+    animation: fade-up 1s 0.2s both;
+  }
+
+  .landing-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    animation: fade-up 1s 0.4s both;
+  }
+
+  .landing-title em {
+    font-style: italic;
+    color: var(--blue-pale);
+  }
+
+  .landing-subtitle {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.1em;
+    margin-top: 1.2rem;
+    margin-bottom: 3.5rem;
+    animation: fade-up 1s 0.6s both;
+  }
+
+  /* Landing Options */
+  .landing-options {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fade-up 1s 0.8s both;
+  }
+
+  .landing-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    width: 180px;
+    padding: 2rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .landing-card:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: var(--aqua);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(79,195,232,0.15);
+  }
+
+  .landing-card .icon {
+    font-size: 2rem;
+    filter: drop-shadow(0 0 8px rgba(79,195,232,0.6));
+  }
+
+  .landing-card span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--white);
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .landing-card p {
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .landing-enter {
+    position: relative;
+    z-index: 2;
+    margin-top: 3.5rem;
+    animation: fade-up 1s 1s both;
+  }
+
+  .btn-enter {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.7);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.8rem 2rem;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .btn-enter:hover {
+    border-color: var(--white);
+    color: var(--white);
+    background: rgba(255,255,255,0.08);
+  }
+
+  .btn-enter svg {
+    transition: transform 0.3s;
+  }
+
+  .btn-enter:hover svg {
+    transform: translateX(4px);
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============ MAIN PAGE ============ */
+  #main {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+  }
+
+  #main.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* NAVBAR */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 4rem;
+    background: rgba(10,37,64,0.0);
+    transition: background 0.4s, padding 0.4s, box-shadow 0.4s;
+  }
+
+  nav.scrolled {
+    background: rgba(10,37,64,0.97);
+    padding: 1rem 4rem;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--white);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-logo em {
+    font-style: italic;
+    color: var(--aqua);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    transition: color 0.3s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--aqua);
+    transition: width 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .btn-rezervo {
+    background: var(--aqua);
+    color: var(--blue-deep);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: none;
+    padding: 0.7rem 1.8rem;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+
+  .btn-rezervo:hover {
+    background: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(79,195,232,0.4);
+  }
+
+  /* HERO */
+  .hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1800&q=80') center/cover no-repeat;
+    transform-origin: center;
+    animation: ken-burns 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes ken-burns {
+    from { transform: scale(1); }
+    to { transform: scale(1.07); }
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,37,64,0.9) 0%, rgba(10,37,64,0.3) 50%, transparent 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 4rem 4rem 5rem;
+    max-width: 750px;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--aqua);
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.08;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--blue-pale);
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--aqua);
+    color: var(--blue-deep);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(79,195,232,0.5);
+  }
+
+  .btn-outline {
+    border: 1.5px solid rgba(255,255,255,0.4);
+    color: var(--white);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: transparent;
+    padding: 1rem 2.5rem;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--white);
+    background: rgba(255,255,255,0.1);
+  }
+
+  /* QUICK RESERVE */
+  .quick-reserve {
+    background: var(--blue-deep);
+    padding: 2.5rem 4rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .qr-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .qr-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--aqua);
+  }
+
+  .qr-input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    color: var(--white);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    padding: 0.4rem 0;
+    width: 160px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .qr-input:focus { border-color: var(--aqua); }
+
+  .qr-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.15);
+  }
+
+  .btn-search {
+    background: var(--aqua);
+    color: var(--blue-deep);
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.9rem 2rem;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-search:hover { background: var(--white); transform: scale(1.03); }
+
+  /* SECTIONS GENERIC */
+  section {
+    padding: 6rem 4rem;
+  }
+
+  .section-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--blue-light);
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 4vw, 3.8rem);
+    font-weight: 300;
+    color: var(--text-dark);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 500px;
+    margin-bottom: 3.5rem;
+  }
+
+  /* ROOMS */
+  .rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .room-card {
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--white);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+
+  .room-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(10,37,64,0.15);
+  }
+
+  .room-img {
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .room-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .room-card:hover .room-img img { transform: scale(1.08); }
+
+  .room-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--aqua);
+    color: var(--blue-deep);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+  }
+
+  .room-info {
+    padding: 1.8rem;
+  }
+
+  .room-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--blue-deep);
+    margin-bottom: 0.5rem;
+  }
+
+  .room-desc {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+  }
+
+  .room-features {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .room-feat {
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .room-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--sand-dark);
+    padding-top: 1.2rem;
+  }
+
+  .room-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: var(--blue-deep);
+  }
+
+  .room-price sup {
+    font-size: 0.9rem;
+    vertical-align: super;
+  }
+
+  .room-price span {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+  }
+
+  .btn-room {
+    background: var(--blue-deep);
+    color: var(--white);
+    border: none;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-family: 'Jost', sans-serif;
+    padding: 0.6rem 1.4rem;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .btn-room:hover { background: var(--blue-light); }
+
+  /* RESTAURANT */
+  .restaurant {
+    background: var(--blue-deep);
+    color: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .restaurant-img {
+    height: 600px;
+    overflow: hidden;
+  }
+
+  .restaurant-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s;
+  }
+
+  .restaurant-img:hover img { transform: scale(1.05); }
+
+  .restaurant-content {
+    padding: 5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .restaurant-content .section-tag { color: var(--aqua); }
+  .restaurant-content .section-title { color: var(--white); }
+  .restaurant-content .section-sub { color: rgba(255,255,255,0.6); max-width: 100%; }
+
+  .menu-highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .menu-item {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 1.2rem;
+    transition: background 0.3s;
+  }
+
+  .menu-item:hover { background: rgba(255,255,255,0.1); }
+
+  .menu-item h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+
+  .menu-item p {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+  }
+
+  /* SPA */
+  .spa {
+    background: var(--sand);
+    text-align: center;
+    padding: 6rem 4rem;
+  }
+
+  .spa-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .spa-card {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    height: 380px;
+    cursor: pointer;
+  }
+
+  .spa-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+
+  .spa-card:hover img { transform: scale(1.08); }
+
+  .spa-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,37,64,0.85) 0%, transparent 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    text-align: left;
+  }
+
+  .spa-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+
+  .spa-card-sub {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.05em;
+  }
+
+  .spa-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--aqua);
+    margin-top: 0.5rem;
+  }
+
+  /* GALLERY */
+  .gallery {
+    padding: 6rem 4rem;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 250px 250px;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .gallery-item {
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .gallery-item:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .gallery-item:nth-child(4) {
+    grid-column: span 2;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+
+  .gallery-item:hover img { transform: scale(1.08); }
+
+  .gallery-item-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10,37,64,0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+  }
+
+  .gallery-item:hover .gallery-item-overlay {
+    background: rgba(10,37,64,0.4);
+  }
+
+  .gallery-item-overlay span {
+    opacity: 0;
+    color: var(--white);
+    font-size: 2rem;
+    transition: opacity 0.3s;
+  }
+
+  .gallery-item:hover .gallery-item-overlay span { opacity: 1; }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-mid) 100%);
+    padding: 6rem 4rem;
+    text-align: center;
+    color: var(--white);
+  }
+
+  .testimonials .section-tag { color: var(--aqua); }
+  .testimonials .section-title { color: var(--white); margin-bottom: 3rem; }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .review-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: left;
+    transition: background 0.3s;
+  }
+
+  .review-card:hover { background: rgba(255,255,255,0.11); }
+
+  .stars {
+    color: var(--gold);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  .review-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .reviewer {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .reviewer-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--aqua);
+  }
+
+  .reviewer-name {
+    font-size: 0.85rem;
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .reviewer-country {
+    font-size: 0.73rem;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* FOOTER */
+  footer {
+    background: #060f1c;
+    padding: 4rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.85rem;
+  }
+
+  .footer-brand h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-brand h2 em { font-style: italic; color: var(--aqua); }
+
+  .footer-brand p { line-height: 1.7; margin-bottom: 1.5rem; }
+
+  .social-links { display: flex; gap: 0.8rem; }
+
+  .social-link {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+  }
+
+  .social-link:hover {
+    border-color: var(--aqua);
+    color: var(--aqua);
+    background: rgba(79,195,232,0.1);
+  }
+
+  .footer-col h4 {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 0.6rem; }
+
+  .footer-col a {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s;
+  }
+
+  .footer-col a:hover { color: var(--white); }
+
+  .footer-bottom {
+    background: #030a12;
+    padding: 1.2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* LIGHTBOX */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(6,15,28,0.95);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox.open { display: flex; }
+
+  .lightbox-img {
+    max-width: 85vw;
+    max-height: 85vh;
+    border-radius: 12px;
+    object-fit: contain;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: var(--white);
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+  }
+
+  .lightbox-close:hover { background: rgba(255,255,255,0.2); }
+
+  /* MODAL REZERVO */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(6,15,28,0.8);
+    z-index: 3000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 3rem;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    animation: modal-in 0.35s ease;
+  }
+
+  @keyframes modal-in {
+    from { opacity: 0; transform: scale(0.9) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    background: var(--sand);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+  }
+
+  .modal-close:hover { background: var(--sand-dark); }
+
+  .modal h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--blue-deep);
+    margin-bottom: 0.3rem;
+  }
+
+  .modal-sub { font-size: 0.85rem; color: var(--text-light); margin-bottom: 2rem; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+
+  .form-group input, .form-group select {
+    border: 1.5px solid var(--sand-dark);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color 0.3s;
+    background: var(--white);
+  }
+
+  .form-group input:focus, .form-group select:focus {
+    border-color: var(--aqua);
+  }
+
+  .btn-modal-submit {
+    width: 100%;
+    background: var(--blue-deep);
+    color: var(--white);
+    border: none;
+    padding: 1rem;
+    border-radius: 12px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 0.5rem;
+  }
+
+  .btn-modal-submit:hover {
+    background: var(--blue-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(10,37,64,0.3);
+  }
+
+  /* SCROLL INDICATOR */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    right: 4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    z-index: 10;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: rgba(255,255,255,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scroll-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--aqua);
+    animation: scroll-line 2s ease-in-out infinite;
+  }
+
+  @keyframes scroll-line {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    nav.scrolled { padding: 0.8rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .rooms-grid { grid-template-columns: 1fr; }
+    .restaurant { grid-template-columns: 1fr; }
+    .restaurant-img { height: 300px; }
+    .spa-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item:first-child { grid-column: span 2; grid-row: span 1; }
+    .gallery-item:nth-child(4) { grid-column: span 1; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr 1fr; }
+    .hero-content { padding: 2rem 1.5rem 4rem; }
+    .quick-reserve { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .qr-divider { display: none; }
+    .landing-options { flex-direction: row; }
+    .landing-card { width: 140px; padding: 1.2rem 1rem; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
 </head>
 <body>
-  <header id="header">
-    <nav>
-      <div class="logo">WALLART</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Ballina</a></li>
-        <li><a href="koleksionet.html">Koleksionet</a></li>
-        <li><a href="cilesia.html">Cilësia</a></li>
-        <li><a href="rreth-nesh.html">Rreth Nesh</a></li>
-        <li><a href="kontakti.html">Kontakti</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <h1>Letre Murri Luksozë</h1>
-      <p>Dizajne ekskluzive të printuara me teknologji ekologjike</p>
-      <a href="koleksionet.html" class="cta-button">Shiko Koleksionin</a>
-    </div>
-  </section>
+<!-- ===== LANDING PAGE ===== -->
+<div id="landing">
+  <div class="landing-bg"></div>
 
-  <div class="award-banner">
-    <p><em>"Letre Murri më e Mirë Ekologjike"</em> - <strong>Revista Arkitekturore</strong></p>
+  <!-- Animated waves -->
+  <div class="landing-waves">
+    <svg viewBox="0 0 1440 180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,80 C180,120 360,40 540,80 C720,120 900,40 1080,80 C1260,120 1440,60 1440,80 L1440,180 L0,180 Z" fill="rgba(10,37,64,0.9)"/>
+      <path d="M0,110 C200,80 400,140 600,110 C800,80 1000,140 1200,110 C1350,88 1440,120 1440,110 L1440,180 L0,180 Z" fill="rgba(10,37,64,0.6)"/>
+    </svg>
   </div>
 
-  <section class="collections" id="products">
-    <a href="koleksionet.html" class="card-link" style="max-width: 520px; margin: 0 auto; display:block;">
-      <h2 class="section-title">Koleksionet Tona</h2>
-    </a>
-    <p class="section-subtitle">Kliko te koleksionet për të hapur faqe të reja (Ballina mbetet statike)</p>
+  <div class="landing-content">
+    <div class="landing-badge">⭐ Resort 5 Yje · Riviera Shqiptare</div>
 
-    <div class="products-grid">
-      <a class="card-link product-card" href="botanik.html">
-        <div class="product-image" style="background: linear-gradient(135deg, #547260 0%, #dcab49 100%);">🌿</div>
-        <div class="product-info"><h3>Koleksioni Botanik</h3><p>Motive nga natyra që sjellin elegancë dhe qetësi.</p></div>
-      </a>
+    <h1 class="landing-title">
+      Hotel<br>
+      <em>Adriatik</em><br>
+      Resort & Spa
+    </h1>
 
-      <a class="card-link product-card" href="art-deco.html">
-        <div class="product-image" style="background: linear-gradient(135deg, #003B49 0%, #006b7d 100%);">✨</div>
-        <div class="product-info"><h3>Koleksioni Art Deco</h3><p>Dizajne të frymëzuara nga vitet '20 me forma gjeometrike.</p></div>
-      </a>
+    <p class="landing-subtitle">Ku deti takon luksin · Çdo moment është i pashlyeshëm</p>
 
-      <a class="card-link product-card" href="chinoiserie.html">
-        <div class="product-image" style="background: linear-gradient(135deg, #f1ebd1 0%, #b9b1a6 100%);">🦋</div>
-        <div class="product-info"><h3>Koleksioni Chinoiserie</h3><p>Motivet orientale në stil bashkëkohor.</p></div>
+    <div class="landing-options">
+      <a class="landing-card" onclick="enterMain('rooms')">
+        <div class="icon">🛏️</div>
+        <span>Dhomat & Çmimet</span>
+        <p>12 suite ekskluzive me pamje nga deti</p>
       </a>
+      <a class="landing-card" onclick="openModal()">
+        <div class="icon">📅</div>
+        <span>Rezervo Tani</span>
+        <p>Disponueshmëri direkte & çmime speciale</p>
+      </a>
+      <a class="landing-card" onclick="enterMain('restaurant')">
+        <div class="icon">🍽️</div>
+        <span>Restoranti & Spa</span>
+        <p>Kuzhina mesdhetare & relaksim total</p>
+      </a>
+      <a class="landing-card" onclick="enterMain('gallery')">
+        <div class="icon">📸</div>
+        <span>Galeria</span>
+        <p>Imazhe nga parajsa jonë bregdetare</p>
+      </a>
+    </div>
+  </div>
 
-      <a class="card-link product-card" href="tropik.html">
-        <div class="product-image" style="background: linear-gradient(135deg, #6d7159 0%, #9ea19c 100%);">🍃</div>
-        <div class="product-info"><h3>Koleksioni Tropik</h3><p>Gjethe palme dhe motive tropikale.</p></div>
-      </a>
+  <div class="landing-enter">
+    <button class="btn-enter" onclick="enterMain()">
+      Hyr në Faqen Kryesore
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+</div>
 
-      <a class="card-link product-card" href="gotik.html">
-        <div class="product-image" style="background: linear-gradient(135deg, #2d3133 0%, #dcab49 100%);">⭐</div>
-        <div class="product-info"><h3>Koleksioni Gotik</h3><p>Dizajne të guximshme me elemente dramatike.</p></div>
-      </a>
+<!-- ===== MODAL REZERVO ===== -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>Rezervo Dhomën</h3>
+    <p class="modal-sub">Plotësoni formularin · Konfirmim brenda 24 orësh</p>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Mbërrije</label>
+        <input type="date" id="checkin">
+      </div>
+      <div class="form-group">
+        <label>Largim</label>
+        <input type="date" id="checkout">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Të Rritur</label>
+        <select>
+          <option>1 i Rritur</option>
+          <option>2 të Rritur</option>
+          <option>3 të Rritur</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Fëmijë</label>
+        <select>
+          <option>Pa Fëmijë</option>
+          <option>1 Fëmijë</option>
+          <option>2 Fëmijë</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Lloji i Dhomës</label>
+      <select>
+        <option>Dhomë Standarde Sea View</option>
+        <option>Suite Deluxe Bregdetare</option>
+        <option>Suite Presidenciale</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Emri & Mbiemri</label>
+      <input type="text" placeholder="p.sh. Ardian Kelmendi">
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" placeholder="email@shembull.com">
+    </div>
+    <button class="btn-modal-submit" onclick="submitReservation()">Konfirmo Rezervimin →</button>
+  </div>
+</div>
 
-      <a class="card-link product-card" href="gjeometrik.html">
-        <div class="product-image" style="background: linear-gradient(135deg, #239568 0%, #eb6043 100%);">🎨</div>
-        <div class="product-info"><h3>Koleksioni Gjeometrik</h3><p>Forma të pastra gjeometrike dhe ngjyra të gjalla.</p></div>
-      </a>
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="">
+</div>
+
+<!-- ===== MAIN PAGE ===== -->
+<div id="main">
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-logo">Hotel <em>Adriatik</em></div>
+    <ul class="nav-links">
+      <li><a href="#rooms">Dhomat</a></li>
+      <li><a href="#restaurant">Restoranti</a></li>
+      <li><a href="#spa">Spa</a></li>
+      <li><a href="#gallery">Galeria</a></li>
+      <li><a href="#reviews">Vlerësimet</a></li>
+    </ul>
+    <button class="btn-rezervo" onclick="openModal()">Rezervo</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" style="padding:0; position:relative;">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-tag">✦ Riviera Shqiptare · Resort 5 Yje</span>
+      <h1 class="hero-title">
+        Parajsa juaj<br>
+        <em>bregdetare</em><br>
+        fillon këtu
+      </h1>
+      <p class="hero-desc">Zbuloni luksin e vërtetë ku valët e Adriatikut takohen me kujdesin e jashtëzakonshëm. Çdo detaj i projektuar për momente të pashlyeshme.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" onclick="openModal()">Rezervo Sot</a>
+        <a class="btn-outline" href="#rooms">Shiko Dhomat</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      Zbrit
     </div>
   </section>
 
-  <footer><p>&copy; 2026 WallArt Premium. Të gjitha të drejtat e rezervuara.</p></footer>
-  <script src="assets/main.js"></script>
+  <!-- QUICK RESERVE BAR -->
+  <div class="quick-reserve">
+    <div class="qr-field">
+      <span class="qr-label">Mbërrije</span>
+      <input class="qr-input" type="date" id="qr-checkin">
+    </div>
+    <div class="qr-divider"></div>
+    <div class="qr-field">
+      <span class="qr-label">Largim</span>
+      <input class="qr-input" type="date" id="qr-checkout">
+    </div>
+    <div class="qr-divider"></div>
+    <div class="qr-field">
+      <span class="qr-label">Mysafirë</span>
+      <input class="qr-input" type="text" placeholder="2 të rritur" value="2 të rritur">
+    </div>
+    <div class="qr-divider"></div>
+    <div class="qr-field">
+      <span class="qr-label">Dhoma</span>
+      <input class="qr-input" type="text" placeholder="Sea View Suite" value="Sea View Suite">
+    </div>
+    <button class="btn-search" onclick="openModal()">
+      Kërko
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M9.5 9.5L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- ROOMS -->
+  <section id="rooms" style="background: var(--sand);">
+    <span class="section-tag">✦ Akomodim Ekskluzivist</span>
+    <h2 class="section-title">Dhomat & <em style="font-family: Cormorant Garamond; font-style: italic;">Çmimet</em></h2>
+    <p class="section-sub">Çdo dhomë është një saktësi arkitektonike me pamje drejtpërdrejt nga Adriatiku i kaltër.</p>
+    <div class="rooms-grid">
+      <div class="room-card">
+        <div class="room-img">
+          <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&q=80" alt="Dhomë Standarde">
+          <span class="room-badge">Sea View</span>
+        </div>
+        <div class="room-info">
+          <h3 class="room-name">Dhomë Standarde</h3>
+          <p class="room-desc">Komoditet i plotë me balkon privat dhe pamje panoramike nga deti Adriatik.</p>
+          <div class="room-features">
+            <span class="room-feat">🛏 King Bed</span>
+            <span class="room-feat">🌊 Sea View</span>
+            <span class="room-feat">📶 Wi-Fi</span>
+            <span class="room-feat">❄️ AC</span>
+          </div>
+          <div class="room-footer">
+            <div class="room-price"><sup>€</sup>120 <span>/ natë</span></div>
+            <button class="btn-room" onclick="openModal()">Rezervo</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <div class="room-img">
+          <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&q=80" alt="Suite Deluxe">
+          <span class="room-badge">Bestseller</span>
+        </div>
+        <div class="room-info">
+          <h3 class="room-name">Suite Deluxe</h3>
+          <p class="room-desc">Terrasa private 30m², jacuzzi me pamje nga deti dhe dekor luksoze bashkëkohor.</p>
+          <div class="room-features">
+            <span class="room-feat">🛁 Jacuzzi</span>
+            <span class="room-feat">🌅 Terrasa</span>
+            <span class="room-feat">🍾 Minibar</span>
+            <span class="room-feat">👁 Panorama</span>
+          </div>
+          <div class="room-footer">
+            <div class="room-price"><sup>€</sup>220 <span>/ natë</span></div>
+            <button class="btn-room" onclick="openModal()">Rezervo</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <div class="room-img">
+          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80" alt="Suite Presidenciale">
+          <span class="room-badge" style="background: var(--gold); color: var(--white);">Premium</span>
+        </div>
+        <div class="room-info">
+          <h3 class="room-name">Suite Presidenciale</h3>
+          <p class="room-desc">Sipërfaqe 120m², pishinë private, sallon dhe shërbim personal butler 24 orë.</p>
+          <div class="room-features">
+            <span class="room-feat">🏊 Pool</span>
+            <span class="room-feat">🛎 Butler</span>
+            <span class="room-feat">🍳 Kitchen</span>
+            <span class="room-feat">🎭 120m²</span>
+          </div>
+          <div class="room-footer">
+            <div class="room-price"><sup>€</sup>480 <span>/ natë</span></div>
+            <button class="btn-room" onclick="openModal()">Rezervo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESTAURANT -->
+  <section id="restaurant" class="restaurant">
+    <div class="restaurant-img">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Restoranti">
+    </div>
+    <div class="restaurant-content">
+      <span class="section-tag">✦ Gastronomia</span>
+      <h2 class="section-title">Restoranti <em style="font-style:italic">Blu Mare</em></h2>
+      <p class="section-sub">Kuzhina mesdhetare me produkte lokale të freskëta. Shfaqja e diellit perëndim mbi det — çdo darkë bëhet ritual.</p>
+
+      <div class="menu-highlights">
+        <div class="menu-item">
+          <h4>🦞 Aragosta Grille</h4>
+          <p>Aragosta e freskët me gjalpë truffe dhe perime stinore</p>
+        </div>
+        <div class="menu-item">
+          <h4>🐟 Çipura Bregdetare</h4>
+          <p>Peshk i kapur çdo mëngjes, i pjekur me limon dhe barishte</p>
+        </div>
+        <div class="menu-item">
+          <h4>🍷 Cantina Shqiptare</h4>
+          <p>Mbi 80 lloje verërash vendase dhe ndërkombëtare</p>
+        </div>
+        <div class="menu-item">
+          <h4>☕ Breakfast Buffet</h4>
+          <p>Mëngjes i shërbyer me pamje nga deti, 7:00–11:00</p>
+        </div>
+      </div>
+
+      <a class="btn-primary" href="#" onclick="openModal()">Rezervo Tavolinë</a>
+    </div>
+  </section>
+
+  <!-- SPA -->
+  <section id="spa" class="spa">
+    <span class="section-tag">✦ Wellness & Relaksim</span>
+    <h2 class="section-title">Spa <em style="font-family: Cormorant Garamond; font-style: italic;">& Mirëqenie</em></h2>
+    <p class="section-sub" style="margin: 0 auto 0; text-align:center;">Lëreni stresin pas. Qendra jonë Spa ofron trajtime ekskluzive në 1200m² relaksimi total.</p>
+
+    <div class="spa-grid">
+      <div class="spa-card" onclick="openLightbox('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=80')">
+        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=80" alt="Masazh">
+        <div class="spa-overlay">
+          <h3 class="spa-card-title">Masazh Relaksues</h3>
+          <p class="spa-card-sub">60 min · 90 min · 120 min</p>
+          <p class="spa-price">nga €65</p>
+        </div>
+      </div>
+      <div class="spa-card" onclick="openLightbox('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80')">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Pishinë">
+        <div class="spa-overlay">
+          <h3 class="spa-card-title">Pishinë Infinity</h3>
+          <p class="spa-card-sub">Me pamje drejtpërdrejt nga Adriatiku</p>
+          <p class="spa-price">Falas për mysafirët</p>
+        </div>
+      </div>
+      <div class="spa-card" onclick="openLightbox('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1200&q=80')">
+        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=80" alt="Trajtim Fytyre">
+        <div class="spa-overlay">
+          <h3 class="spa-card-title">Trajtim Fytyre</h3>
+          <p class="spa-card-sub">Produkte bio premium · 75 min</p>
+          <p class="spa-price">nga €80</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <span class="section-tag">✦ Momentet Tona</span>
+    <h2 class="section-title">Galeria <em style="font-family: Cormorant Garamond; font-style: italic;">e Fotove</em></h2>
+    <p class="section-sub">Zbuloni bukurinë e resortit tonë përmes syve të mysafirëve tanë të lumtur.</p>
+
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80')">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="Plazhi">
+        <div class="gallery-item-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1455587734955-081b22074882?w=1200&q=80')">
+        <img src="https://images.unsplash.com/photo-1455587734955-081b22074882?w=600&q=80" alt="Pishinë">
+        <div class="gallery-item-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80')">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="Hotel">
+        <div class="gallery-item-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80')">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Restorant">
+        <div class="gallery-item-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80')">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Spa">
+        <div class="gallery-item-overlay"><span>🔍</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="reviews" class="testimonials">
+    <span class="section-tag">✦ Fjalët e Mysafirëve Tanë</span>
+    <h2 class="section-title">Çfarë thonë <em style="font-family: Cormorant Garamond; font-style: italic;">mysafirët</em></h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Pamja nga deti ishte magjike. Çdo mëngjes zgjoheshim me tingullin e valëve — një eksperiencë që nuk harrohet kurrë."</p>
+        <div class="reviewer">
+          <img class="reviewer-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80" alt="">
+          <div>
+            <div class="reviewer-name">Elsa Maloku</div>
+            <div class="reviewer-country">🇦🇱 Tiranë, Shqipëri</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Das Frühstück mit Meerblick war unvergesslich. Das Personal war ausnahmslos freundlich und professionell. Absolute Empfehlung!"</p>
+        <div class="reviewer">
+          <img class="reviewer-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80" alt="">
+          <div>
+            <div class="reviewer-name">Klaus Berger</div>
+            <div class="reviewer-country">🇩🇪 München, Gjermani</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"The spa treatments were exceptional and the infinity pool view is something out of a dream. Will definitely return next summer!"</p>
+        <div class="reviewer">
+          <img class="reviewer-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&q=80" alt="">
+          <div>
+            <div class="reviewer-name">Sophie Laurent</div>
+            <div class="reviewer-country">🇫🇷 Paris, Francë</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">
+      <h2>Hotel <em>Adriatik</em></h2>
+      <p>Resort & Spa me 5 yje në zemër të Rivierës Shqiptare. Ku deti takon luksin dhe çdo moment bëhet kujtime.</p>
+      <div class="social-links">
+        <a class="social-link" href="#">f</a>
+        <a class="social-link" href="#">in</a>
+        <a class="social-link" href="#">✦</a>
+        <a class="social-link" href="#">▶</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Shërbime</h4>
+      <ul>
+        <li><a href="#rooms">Dhomat & Suites</a></li>
+        <li><a href="#restaurant">Restoranti Blu Mare</a></li>
+        <li><a href="#spa">Spa & Wellness</a></li>
+        <li><a href="#">Aktivitete Detare</a></li>
+        <li><a href="#">Konferenca</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Informacion</h4>
+      <ul>
+        <li><a href="#">Rreth Nesh</a></li>
+        <li><a href="#">Politika e Anulimit</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Kushtet e Qëndrimit</a></li>
+        <li><a href="#">Aksesueshmëria</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Kontakt</h4>
+      <ul>
+        <li><a href="#">📍 Riviera Shqiptare</a></li>
+        <li><a href="tel:+355123456">📞 +355 12 345 678</a></li>
+        <li><a href="mailto:info@adriatik.al">✉ info@adriatik.al</a></li>
+        <li><a href="#">⏰ Reception 24/7</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <span>© 2025 Hotel Adriatik Resort & Spa · Të gjitha të drejtat e rezervuara</span>
+    <span>Projektuar me ❤️ për Rivierën Shqiptare</span>
+  </div>
+
+</div><!-- end #main -->
+
+<script>
+  let targetSection = null;
+
+  function enterMain(section) {
+    targetSection = section || null;
+    const landing = document.getElementById('landing');
+    const main = document.getElementById('main');
+    landing.classList.add('hide');
+    main.classList.add('show');
+
+    if (targetSection) {
+      setTimeout(() => {
+        const el = document.getElementById(targetSection);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 600);
+    }
+  }
+
+  function openModal() {
+    document.getElementById('modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // Set default dates
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const nextWeek = new Date(today);
+    nextWeek.setDate(nextWeek.getDate() + 7);
+    document.getElementById('checkin').value = tomorrow.toISOString().split('T')[0];
+    document.getElementById('checkout').value = nextWeek.toISOString().split('T')[0];
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function submitReservation() {
+    alert('✅ Faleminderit! Rezervimi juaj u dërgua me sukses.\nDo të kontaktoheni brenda 24 orësh.\n\nHotel Adriatik Resort & Spa');
+    closeModal();
+  }
+
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Close modal on overlay click
+  document.getElementById('modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // Navbar scroll
+  window.addEventListener('scroll', function() {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 80) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // Set quick reserve default dates
+  const today = new Date();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const nextWeek = new Date(today);
+  nextWeek.setDate(nextWeek.getDate() + 7);
+  document.getElementById('qr-checkin').value = tomorrow.toISOString().split('T')[0];
+  document.getElementById('qr-checkout').value = nextWeek.toISOString().split('T')[0];
+
+  // ESC key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeModal();
+      closeLightbox();
+    }
+  });
+</script>
 </body>
 </html>
