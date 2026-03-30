@@ -1193,240 +1193,27 @@
     100% { left: 100%; }
   }
 
-  /* ============ HAMBURGER MENU ============ */
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.3rem;
-    z-index: 600;
-  }
-
-  .hamburger span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--white);
-    border-radius: 2px;
-    transition: all 0.3s ease;
-  }
-
-  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-  .mobile-menu {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(10,37,64,0.98);
-    backdrop-filter: blur(20px);
-    z-index: 550;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2.5rem;
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 0.35s ease, transform 0.35s ease;
-    pointer-events: none;
-  }
-
-  .mobile-menu.open {
-    display: flex;
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: all;
-  }
-
-  .mobile-menu a {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: rgba(255,255,255,0.85);
-    text-decoration: none;
-    letter-spacing: 0.05em;
-    transition: color 0.3s;
-  }
-
-  .mobile-menu a:hover { color: var(--aqua); }
-
-  .mobile-menu .btn-rezervo-mobile {
-    background: var(--aqua);
-    color: var(--blue-deep);
-    font-family: 'Jost', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 1rem 3rem;
-    border-radius: 100px;
-    text-decoration: none;
-    margin-top: 1rem;
-    transition: all 0.3s;
-  }
-
-  .mobile-menu .mobile-contact {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.4);
-    letter-spacing: 0.1em;
-    text-align: center;
-    margin-top: 1rem;
-  }
-
-  /* ============ RESPONSIVE — TABLET (≤ 1024px) ============ */
-  @media (max-width: 1024px) {
-    .rooms-grid { grid-template-columns: repeat(2, 1fr); }
-    footer { grid-template-columns: 1fr 1fr; gap: 2rem; }
-    nav { padding: 1.2rem 2rem; }
-    nav.scrolled { padding: 0.9rem 2rem; }
-    section { padding: 5rem 2.5rem; }
-    .hero-content { padding: 3rem 2.5rem 5rem; }
-    .quick-reserve { padding: 2rem 2.5rem; gap: 1.5rem; }
-    .qr-input { width: 130px; }
-  }
-
-  /* ============ RESPONSIVE — MOBILE (≤ 768px) ============ */
-  @media (max-width: 768px) {
-
-    /* NAV */
-    nav {
-      padding: 1rem 1.2rem;
-      background: rgba(10,37,64,0.85);
-      backdrop-filter: blur(12px);
-    }
-    nav.scrolled { padding: 0.8rem 1.2rem; }
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    nav.scrolled { padding: 0.8rem 1.5rem; }
     .nav-links { display: none; }
-    .btn-rezervo { display: none; }
-    .hamburger { display: flex; }
-
-    /* LANDING */
-    .landing-content { padding: 1.5rem; }
-    .landing-badge { font-size: 0.6rem; letter-spacing: 0.2em; padding: 0.35rem 0.9rem; margin-bottom: 1.2rem; }
-    .landing-title { font-size: clamp(2.5rem, 12vw, 4rem); margin-bottom: 0; }
-    .landing-subtitle { font-size: 0.82rem; letter-spacing: 0.06em; margin-top: 0.8rem; margin-bottom: 2rem; }
-    .landing-options {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.8rem;
-      width: 100%;
-      max-width: 340px;
-    }
-    .landing-card { width: 100%; padding: 1.1rem 0.9rem; border-radius: 16px; gap: 0.5rem; }
-    .landing-card .icon { font-size: 1.6rem; }
-    .landing-card span { font-size: 0.9rem; }
-    .landing-card p { display: none; }
-    .landing-enter { margin-top: 2rem; }
-    .btn-enter { font-size: 0.68rem; padding: 0.7rem 1.5rem; }
-    .landing-waves { height: 100px; }
-
-    /* HERO */
-    .hero { height: 100svh; align-items: flex-end; }
-    .hero-content { padding: 1.5rem 1.2rem 6rem; max-width: 100%; }
-    .hero-tag { font-size: 0.62rem; letter-spacing: 0.2em; }
-    .hero-title { font-size: clamp(2.2rem, 9vw, 3.5rem); margin-bottom: 1rem; }
-    .hero-desc { font-size: 0.88rem; margin-bottom: 1.8rem; max-width: 100%; }
-    .hero-actions { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
-    .btn-primary, .btn-outline { padding: 0.85rem 2rem; font-size: 0.75rem; width: 100%; text-align: center; }
-    .scroll-indicator { display: none; }
-
-    /* QUICK RESERVE — stack vertically */
-    .quick-reserve {
-      flex-direction: column;
-      align-items: stretch;
-      padding: 1.5rem 1.2rem;
-      gap: 0;
-    }
-    .qr-field { flex-direction: row; align-items: center; justify-content: space-between; padding: 0.9rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .qr-divider { display: none; }
-    .qr-input { width: auto; font-size: 0.9rem; border-bottom: none; text-align: right; }
-    .qr-label { font-size: 0.62rem; }
-    .btn-search { margin-top: 1.2rem; justify-content: center; padding: 1rem; border-radius: 14px; font-size: 0.82rem; }
-
-    /* SECTIONS */
-    section { padding: 3.5rem 1.2rem; }
-    .section-title { font-size: clamp(2rem, 8vw, 2.8rem); }
-    .section-sub { font-size: 0.88rem; max-width: 100%; margin-bottom: 2.5rem; }
-
-    /* ROOMS — single column */
-    .rooms-grid { grid-template-columns: 1fr; gap: 1.2rem; }
-    .room-img { height: 200px; }
-    .room-info { padding: 1.3rem; }
-    .room-name { font-size: 1.3rem; }
-
-    /* RESTAURANT */
+    section { padding: 4rem 1.5rem; }
+    .rooms-grid { grid-template-columns: 1fr; }
     .restaurant { grid-template-columns: 1fr; }
-    .restaurant-img { height: 240px; order: -1; }
-    .restaurant-content { padding: 2.5rem 1.2rem; }
-    .menu-highlights { grid-template-columns: 1fr; gap: 0.8rem; margin-bottom: 2rem; }
-    .menu-item { padding: 1rem; }
-
-    /* SPA */
-    .spa { padding: 3.5rem 1.2rem; }
-    .spa-grid { grid-template-columns: 1fr; gap: 1rem; }
-    .spa-card { height: 260px; }
-
-    /* GALLERY */
-    .gallery-grid {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 160px 160px 160px;
-      gap: 0.7rem;
-    }
-    .gallery-item:first-child { grid-column: span 2; grid-row: span 1; height: 200px; }
+    .restaurant-img { height: 300px; }
+    .spa-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item:first-child { grid-column: span 2; grid-row: span 1; }
     .gallery-item:nth-child(4) { grid-column: span 1; }
-    .gallery-item img { height: 100%; }
-
-    /* TESTIMONIALS */
-    .testimonials { padding: 3.5rem 1.2rem; }
-    .reviews-grid { grid-template-columns: 1fr; gap: 1rem; }
-    .review-text { font-size: 1rem; }
-
-    /* FOOTER */
-    footer {
-      grid-template-columns: 1fr;
-      padding: 2.5rem 1.2rem;
-      gap: 2rem;
-    }
-    .footer-col h4 { margin-bottom: 0.8rem; }
-    .footer-bottom {
-      flex-direction: column;
-      gap: 0.4rem;
-      text-align: center;
-      padding: 1rem 1.2rem;
-      font-size: 0.7rem;
-    }
-
-    /* MODAL */
-    .modal {
-      padding: 2rem 1.3rem;
-      border-radius: 20px 20px 0 0;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      max-width: 100%;
-      margin: 0;
-      max-height: 92svh;
-      overflow-y: auto;
-    }
-    .modal-overlay { align-items: flex-end; }
-    .form-row { grid-template-columns: 1fr; gap: 0; }
-    .modal h3 { font-size: 1.7rem; }
-
-    /* LIGHTBOX */
-    .lightbox-img { max-width: 95vw; max-height: 80vh; }
-  }
-
-  /* ============ RESPONSIVE — SMALL PHONES (≤ 375px) ============ */
-  @media (max-width: 375px) {
-    .landing-title { font-size: 2.3rem; }
-    .landing-options { max-width: 300px; gap: 0.6rem; }
-    .hero-title { font-size: 2rem; }
-    .section-title { font-size: 1.9rem; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr 1fr; }
+    .hero-content { padding: 2rem 1.5rem 4rem; }
+    .quick-reserve { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .qr-divider { display: none; }
+    .landing-options { flex-direction: row; }
+    .landing-card { width: 140px; padding: 1.2rem 1rem; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
   }
 </style>
 </head>
@@ -1563,21 +1350,7 @@
       <li><a href="#reviews">Vlerësimet</a></li>
     </ul>
     <button class="btn-rezervo" onclick="openModal()">Rezervo</button>
-    <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
   </nav>
-
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#rooms" onclick="closeMobileMenu()">Dhomat</a>
-    <a href="#restaurant" onclick="closeMobileMenu()">Restoranti</a>
-    <a href="#spa" onclick="closeMobileMenu()">Spa</a>
-    <a href="#gallery" onclick="closeMobileMenu()">Galeria</a>
-    <a href="#reviews" onclick="closeMobileMenu()">Vlerësimet</a>
-    <a class="btn-rezervo-mobile" onclick="closeMobileMenu(); openModal();">Rezervo Tani</a>
-    <p class="mobile-contact">📞 +355 12 345 678</p>
-  </div>
 
   <!-- HERO -->
   <section class="hero" style="padding:0; position:relative;">
@@ -1878,7 +1651,7 @@
       <ul>
         <li><a href="#">📍 Riviera Shqiptare</a></li>
         <li><a href="tel:+355123456">📞 +355 12 345 678</a></li>
-        <li><a href="/cdn-cgi/l/email-protection#e0898e868fa0818492898194898bce818c">✉ <span class="__cf_email__" data-cfemail="771e191118371613051e16031e1c59161b">[email&#160;protected]</span></a></li>
+        <li><a href="mailto:info@adriatik.al">✉ info@adriatik.al</a></li>
         <li><a href="#">⏰ Reception 24/7</a></li>
       </ul>
     </div>
@@ -1890,31 +1663,8 @@
 
 </div><!-- end #main -->
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   let targetSection = null;
-
-  function toggleMobileMenu() {
-    const menu = document.getElementById('mobileMenu');
-    const ham = document.getElementById('hamburger');
-    const isOpen = menu.classList.contains('open');
-    if (isOpen) {
-      closeMobileMenu();
-    } else {
-      menu.style.display = 'flex';
-      requestAnimationFrame(() => menu.classList.add('open'));
-      ham.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-  }
-
-  function closeMobileMenu() {
-    const menu = document.getElementById('mobileMenu');
-    const ham = document.getElementById('hamburger');
-    menu.classList.remove('open');
-    ham.classList.remove('open');
-    document.body.style.overflow = '';
-    setTimeout(() => { if (!menu.classList.contains('open')) menu.style.display = ''; }, 350);
-  }
 
   function enterMain(section) {
     targetSection = section || null;
@@ -1987,4 +1737,15 @@
   const nextWeek = new Date(today);
   nextWeek.setDate(nextWeek.getDate() + 7);
   document.getElementById('qr-checkin').value = tomorrow.toISOString().split('T')[0];
-  document.getElementById('q
+  document.getElementById('qr-checkout').value = nextWeek.toISOString().split('T')[0];
+
+  // ESC key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeModal();
+      closeLightbox();
+    }
+  });
+</script>
+</body>
+</html>
